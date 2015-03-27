@@ -64,7 +64,6 @@ public class AndroidScrollbar extends CordovaPlugin {
             CallbackContext callbackContext
         )
     {
-        webView.setVerticalScrollBarEnabled(true);
         try {
             webView.setVerticalScrollBarEnabled(args.getBoolean(0));
             callbackContext.success(); 
