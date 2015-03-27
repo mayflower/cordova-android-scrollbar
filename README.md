@@ -54,6 +54,16 @@ have to create a cordova project, add the plugin and configure `test/index.html`
 as your entrypoint. The resulting app will show you a long webpage with a button
 for controlling the scrollbar at the top.
 
+# Building
+
+If you want to hack on the plugin, you'll have to rebuild the Javascript bridge
+from the TypeScript sources.
+
+    npm install
+    grunt
+
+Obviously, this will only work if you install NodeJS / io.js and `grunt-cli` first.
+
 # License
 
 The plugin is published under the Apache license v2.0 .
