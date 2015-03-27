@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="de.mayflower.cordova.android-scrollbar"
+        version="0.1.0">
+
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+
+    <name>android-scrollbar</name>
+
+    <description>
+        Bring back the vertical scrollbar in Android.
+    </description>
+
+    <repo>
+        https://github.com/mayflower/cordova-android-scrollbar.git
+    </repo>
+
+    <keywords>
+        android,scrollbar
+    </keywords>
+
+    <license>Apache 2.0 License</license>
+
+    <author>Christian Speckner</author>
+
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Android">
+                <param name="android-package"
+                       value="de.mayflower.cordova.androidscrollbar.AndroidScrollbar"/>
+                <param name="onload" value="true"></param>
+            </feature>
+        </config-file>
+
+        <source-file
+            src="src/android/AndroidScrollbar.java"
+            target-dir="src/de/mayflower/cordova/androidscrollbar" />
+
+    </platform>
+
+</plugin>
