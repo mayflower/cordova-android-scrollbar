@@ -9,7 +9,7 @@ export function toggleVerticalScrollbarVisibility(visibility: boolean): tsd.Prom
     if (cordova.platformId.toLowerCase() === 'android') {
         cordova.exec(
             () => deferred.resolve(),
-            () => deferred.reject(),
+            (e: any) => deferred.reject(e),
             'AndroidScrollbar',
             'toggleVerticalScrollbarVisibility',
             [visibility]
@@ -21,3 +21,20 @@ export function toggleVerticalScrollbarVisibility(visibility: boolean): tsd.Prom
     return deferred.promise;
 }
 
+export function queryVerticalScrollbarVisibility(): tsd.PromiseInterface<boolean> {
+    var deferred = tsd.create<boolean>();
+
+    if (cordova.platformId.toLowerCase() === 'android') {
+        cordova.exec(
+            (result: number) => deferred.resolve(!!result),
+            (e: any) => deferred.reject(e),
+            'AndroidScrollbar',
+            'queryVerticalScrollbarVisibility',
+            []
+        );
+    } else {
+        deferred.resolve(true);
+    }
+
+    return deferred.promise;
+}

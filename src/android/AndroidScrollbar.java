@@ -52,6 +52,10 @@ public class AndroidScrollbar extends CordovaPlugin {
             return toggleVerticalScrollbarVisibility(args, callbackContext);
         }
 
+        if ("queryVerticalScrollbarVisibility".equals(action)) {
+            return queryVerticalScrollbarVisibility(callbackContext);
+        }
+
         return false;
     }
 
@@ -63,7 +67,7 @@ public class AndroidScrollbar extends CordovaPlugin {
         webView.setVerticalScrollBarEnabled(true);
         try {
             webView.setVerticalScrollBarEnabled(args.getBoolean(0));
-        
+            callbackContext.success(); 
         } catch (JSONException e) {
             callbackContext.error("missing parameter");
         }
@@ -71,4 +75,9 @@ public class AndroidScrollbar extends CordovaPlugin {
         return true;
     }
 
+    protected boolean queryVerticalScrollbarVisibility(CallbackContext callbackContext) {
+        callbackContext.success(webView.isVerticalScrollBarEnabled() ? 1 : 0);
+
+        return true;
+    }
 }

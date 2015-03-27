@@ -6,7 +6,7 @@ interface Cordova {
      * @param action The action name to call on the native side (generally corresponds to the native class method).
      * @param args An array of arguments to pass into the native environment.
      */
-    exec(success: (result: any) => any, fail: () => any, service: string, action: string, args?: Array<any>): void;
+    exec(success: (result: any) => any, fail: (error: any) => any, service: string, action: string, args: Array<any>): void;
     /** Gets the operating system name. */
     platformId: string;
     /** Gets Cordova framework version */

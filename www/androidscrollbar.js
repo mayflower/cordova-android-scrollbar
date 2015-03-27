@@ -183,7 +183,7 @@ var tsd = require('typescript-deferred');
 function toggleVerticalScrollbarVisibility(visibility) {
     var deferred = tsd.create();
     if (cordova.platformId.toLowerCase() === 'android') {
-        cordova.exec(function () { return deferred.resolve(); }, function () { return deferred.reject(); }, 'AndroidScrollbar', 'toggleVerticalScrollbarVisibility', [visibility]);
+        cordova.exec(function () { return deferred.resolve(); }, function (e) { return deferred.reject(e); }, 'AndroidScrollbar', 'toggleVerticalScrollbarVisibility', [visibility]);
     }
     else {
         deferred.resolve();
@@ -191,6 +191,17 @@ function toggleVerticalScrollbarVisibility(visibility) {
     return deferred.promise;
 }
 exports.toggleVerticalScrollbarVisibility = toggleVerticalScrollbarVisibility;
+function queryVerticalScrollbarVisibility() {
+    var deferred = tsd.create();
+    if (cordova.platformId.toLowerCase() === 'android') {
+        cordova.exec(function (result) { return deferred.resolve(!!result); }, function (e) { return deferred.reject(e); }, 'AndroidScrollbar', 'queryVerticalScrollbarVisibility', []);
+    }
+    else {
+        deferred.resolve(true);
+    }
+    return deferred.promise;
+}
+exports.queryVerticalScrollbarVisibility = queryVerticalScrollbarVisibility;
 
 },{"typescript-deferred":1}]},{},[2])(2)
 });
