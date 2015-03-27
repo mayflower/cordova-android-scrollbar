@@ -1,0 +1,22 @@
+{
+  "name": "android-scrollbar",
+  "version": "0.1.0",
+  "description": "Toggle the vertical scrollbar in Android.",
+  "license": "Apache-2.0",
+  "contributors": [
+    {
+      "name": "Christian Speckner",
+      "email": "christian.speckner@mayflower.de"
+    }
+  ],
+  "dependencies": {
+    "grunt": "~0.4.5",
+    "grunt-browserify": "~3.2.1",
+    "grunt-contrib-clean": "~0.6.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-notify": "~0.4.1",
+    "grunt-ts": "~2.0.0",
+    "typescript": "~1.4.0",
+    "typescript-deferred": "~0.1.4"
+  }
+}

@@ -12,7 +12,7 @@
     <name>android-scrollbar</name>
 
     <description>
-        Bring back the vertical scrollbar in Android.
+        Toggle the vertical scrollbar in Android.
     </description>
 
     <repo>
@@ -27,12 +27,15 @@
 
     <author>Christian Speckner</author>
 
+    <js-module src="www/androidscrollbar.js" name="AndroidScrollbar">
+        <clobbers target="mayflower.AndroidScrollbar" />
+    </js-module>
+
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
-            <feature name="Android">
+            <feature name="AndroidScrollbar">
                 <param name="android-package"
                        value="de.mayflower.cordova.androidscrollbar.AndroidScrollbar"/>
-                <param name="onload" value="true"></param>
             </feature>
         </config-file>
 

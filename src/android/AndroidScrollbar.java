@@ -18,19 +18,57 @@ package de.mayflower.cordova.androidscrollbar;
 
 import android.os.Build;
 import android.view.View;
+import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaWebView;
+import org.apache.cordova.CallbackContext;
 
 public class AndroidScrollbar extends CordovaPlugin {
+
+    protected CordovaWebView webView;
 
     @Override
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
 
-        webView.setVerticalScrollBarEnabled(true);
+        this.webView = webView;
+
         webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+    }
+
+    @Override
+    public boolean execute (
+            String action,
+            JSONArray args,
+            CallbackContext callbackContext
+        )
+    {
+        if ("toggleVerticalScrollbarVisibility".equals(action)) {
+            return toggleVerticalScrollbarVisibility(args, callbackContext);
+        }
+
+        return false;
+    }
+
+    protected boolean toggleVerticalScrollbarVisibility(
+            JSONArray args,
+            CallbackContext callbackContext
+        )
+    {
+        webView.setVerticalScrollBarEnabled(true);
+        try {
+            webView.setVerticalScrollBarEnabled(args.getBoolean(0));
+        
+        } catch (JSONException e) {
+            callbackContext.error("missing parameter");
+        }
+        
+        return true;
     }
 
 }
