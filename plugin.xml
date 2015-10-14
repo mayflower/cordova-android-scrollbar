@@ -3,16 +3,16 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android"
         id="de.mayflower.cordova.android-scrollbar"
-        version="0.1.0">
+        version="0.2.0">
 
     <engines>
-        <engine name="cordova" version=">=3.0.0" />
+        <engine name="cordova" version=">=4.0.0" />
     </engines>
 
     <name>android-scrollbar</name>
 
     <description>
-        Control the vertical scrollbar in Android.
+        Control the vertical scrollbar on Android.
     </description>
 
     <repo>

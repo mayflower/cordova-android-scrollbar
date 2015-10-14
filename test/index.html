@@ -496,6 +496,9 @@ limitations under the License.
         return mayflower.AndroidScrollbar.queryVerticalScrollbarVisibility()
             .then(function(visible) {
                 button.innerHTML = visible ? 'Scrollbar visible' : 'Scrollbar hidden';
+            })
+            .otherwise(function(error) {
+                alert(error);
             });
     }
 

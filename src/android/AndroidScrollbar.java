@@ -16,9 +16,8 @@
 
 package de.mayflower.cordova.androidscrollbar;
 
-import android.os.Build;
 import android.view.View;
-import android.util.Log;
+import android.webkit.WebView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,15 +29,21 @@ import org.apache.cordova.CallbackContext;
 
 public class AndroidScrollbar extends CordovaPlugin {
 
-    protected CordovaWebView webView;
+    protected WebView webView;
 
     @Override
-    public void initialize(CordovaInterface cordova, CordovaWebView webView) {
-        super.initialize(cordova, webView);
+    public void initialize(CordovaInterface cordova, CordovaWebView cdvWebView) {
+        super.initialize(cordova, cdvWebView);
 
-        this.webView = webView;
+        try {
+            this.webView = (WebView)(cdvWebView.getEngine().getView());
+        }
+        catch (ClassCastException e) {
+            this.webView = null;
+            return;
+        }
 
-        webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        this.webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
     }
 
     @Override
@@ -48,6 +53,11 @@ public class AndroidScrollbar extends CordovaPlugin {
             CallbackContext callbackContext
         )
     {
+        if (webView == null) {
+            callbackContext.error("plugin not supported with this version of cordova");
+            return true;
+        }
+
         if ("toggleVerticalScrollbarVisibility".equals(action)) {
             return toggleVerticalScrollbarVisibility(args, callbackContext);
         }
