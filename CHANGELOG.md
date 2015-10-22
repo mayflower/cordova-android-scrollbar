@@ -8,3 +8,8 @@ Initial release.
 
  * Adapt to Android platform >=4.0.0
  * Publish on NPM
+
+## Version 0.2.1
+
+  * Only restrict engine for android.
+  * Fix `cordova plugin` invocation in README.md .

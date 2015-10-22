@@ -1,6 +1,6 @@
 {
   "name": "cordova-android-scrollbar",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "\n        Control the vertical scrollbar on Android.\n    ",
   "cordova": {
     "id": "de.mayflower.cordova.android-scrollbar",
@@ -20,7 +20,7 @@
   ],
   "engines": [
     {
-      "name": "cordova",
+      "name": "cordova-android",
       "version": ">=4.0.0"
     }
   ],
