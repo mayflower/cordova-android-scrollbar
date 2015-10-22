@@ -9,7 +9,7 @@ way to programatically reenable them.
 
 Install the plugin into your cordova project via
 
-    cordova plugin install cordova-android-scrollbar
+    cordova plugin add cordova-android-scrollbar
 
 After installing the plugin, the API is exposed on the global
 `mayflower.AndroidScrollbar` object.
